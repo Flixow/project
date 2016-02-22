@@ -1,0 +1,40 @@
+%nav.navbar.navbar-inverse
+  .container-fluid
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{:href => "#"} CheckPlace
+    / Collect the nav links, forms, and other content for toggling
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li.active
+          %a{:href => "#"}
+            Link
+            %span.sr-only (current)
+        %li
+          %a{:href => "#"} Link
+      %ul.nav.navbar-nav.navbar-right
+        - if current_user
+          %li.dropdown
+            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              = current_user.email
+              %span.caret
+            %ul.dropdown-menu
+              %li
+                %a{:href => "#"} Profil
+              %li
+                %a{:href => "#"} Hasło
+              %li.divider{:role => "separator"}
+              %li
+                = link_to "Wyloguj", destroy_user_session_path, :method => :delete
+        - else
+          %li
+            = link_to t('admin.nav_menu.sign_up'), new_user_registration_path
+          %li
+            = link_to t('admin.nav_menu.sign_in'), user_session_path
+    / /.navbar-collapse
+  / /.container-fluid

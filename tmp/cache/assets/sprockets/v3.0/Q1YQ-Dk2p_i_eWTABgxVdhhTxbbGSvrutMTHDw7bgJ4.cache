@@ -1,0 +1,67 @@
+I"	(function() {
+  $.fn.handleDispatchForm = function() {
+    return $(this).each(function() {
+      var dispatch_start_at, form, list_select, mailer_select, mailing_from, template_generic, template_mailer, update_form, update_from, update_start_at;
+      form = $(this);
+      mailer_select = form.find("#item_mailer_name");
+      list_select = form.find("#item_list");
+      template_generic = form.find(".template-generic");
+      template_mailer = form.find(".template-mailer");
+      template_mailer = form.find(".template-mailer");
+      mailing_from = form.find(".mailing-from");
+      dispatch_start_at = form.find(".dispatch-start-at");
+      update_form = function() {
+        return $.ajax({
+          method: "post",
+          url: form.data("update-form-path"),
+          data: form.find("input[name^=item], textarea[name^=item], select[name^=item]").serialize(),
+          dataType: "script"
+        });
+      };
+      update_from = function() {
+        var from_field, from_value;
+        from_value = mailing_from.find("input[type=radio]:checked").val();
+        from_field = mailing_from.find("input[type=text]");
+        if (from_value === "default") {
+          from_field.hide();
+          return from_field.val("");
+        } else if (from_value === "specify") {
+          return from_field.show();
+        }
+      };
+      update_start_at = function() {
+        dispatch_start_at.find('[data-toggle="tooltip"]').tooltip();
+        dispatch_start_at.find('button:first-child').focus(function() {
+          dispatch_start_at.find("input.form-control").focus();
+          return true;
+        });
+        return dispatch_start_at.find("input.form-control").datepicker({
+          forceParse: false,
+          format: "yyyy-mm-dd"
+        });
+      };
+      mailer_select.change(function() {
+        return update_form();
+      });
+      list_select.change(function() {
+        return update_form();
+      });
+      if (mailer_select.val() === "generic") {
+        template_mailer.hide();
+      } else {
+        template_generic.hide();
+      }
+      mailing_from.on("change", "input[type=radio]", function() {
+        return update_from();
+      });
+      update_from();
+      return update_start_at();
+    });
+  };
+
+  $(function() {
+    return $(".dispatch-form").handleDispatchForm();
+  });
+
+}).call(this);
+:ET

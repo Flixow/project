@@ -1,0 +1,14 @@
+- content_for :breadcrumb do
+  %li= link_to t('admin.mailings.index'), admin_mailings_path
+  %li.active= @mailing.id
+
+%p
+  %strong Title:
+  = @mailing.id
+%p
+  %strong Count:
+  = @mailing.template
+
+= link_to 'Edit', edit_admin_mailing_path(@mailing)
+|
+= link_to 'All Mailing lists', admin_mailings_path

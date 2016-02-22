@@ -1,0 +1,44 @@
+- content_for :breadcrumb do
+  %li= link_to t('admin.users.index'), admin_users_path
+  %li.active= @user.email
+
+%p
+  %strong Title:
+  = @user.email
+%p
+  %strong First name:
+  = @user.first_name
+%p
+  %strong Last name:
+  = @user.last_name
+%p
+  %strong Address:
+  = @user.address
+%p
+  %strong Sign in Count:
+  = @user.sign_in_count
+%p
+  %strong Current sign in at:
+  = @user.current_sign_in_at
+%p
+  %strong Last sign in at:
+  = @user.last_sign_in_at
+%p
+  %strong Current IP:
+  = @user.current_sign_in_ip
+%p
+  %strong Last IP:
+  = @user.last_sign_in_ip
+%p
+  %strong Created at:
+  = @user.created_at
+%p
+  %strong Updated at:
+  = @user.updated_at
+
+-if @user.latitude.present? && @user.longitude.present?
+  = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=12&markers=#{@user.latitude}%2C#{@user.longitude}"
+%br
+= link_to 'Edit', edit_admin_user_path(@user)
+|
+= link_to 'All Posts', admin_users_path

@@ -1,0 +1,18 @@
+- content_for :breadcrumb do
+  %li= link_to t('admin.posts.index'), admin_posts_path
+  %li.active= @post.title
+
+%p
+  %strong Title:
+  = @post.title
+%p
+  %strong Body:
+  = @post.body.html_safe
+%p
+  %strong Category:
+  = @post.category_id
+= link_to 'Edit', edit_admin_post_path(@post)
+|
+= link_to 'All Posts', admin_posts_path
+
+= render 'layouts/disqus'

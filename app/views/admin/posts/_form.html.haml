@@ -1,0 +1,23 @@
+-if @post.errors.present?
+  :javascript
+    noty( {text: '#{ @post.errors.full_messages.join(', ') }' , layout: 'bottomLeft' , type: 'error'} )
+= simple_form_for [:admin , @post], :html => { class: 'form-horizontal' } do |p|
+  .form-group
+    =p.label :title, :class => "col-sm-2 control-label"
+    .col-sm-10
+      = p.input_field :title, :label => false , :class => 'form-control'
+  .form-group
+    =p.label :tag_list, :class => "col-sm-2 control-label"
+    .col-sm-10
+      = p.input_field :tag_list, :label => false , :input_html => { :class => 'form-control s2' }
+  .form-group
+    =p.label :category, :class => "col-sm-2 control-label"
+    .col-sm-10
+      = p.association :category, :label => false , :input_html => { :class => 'form-control s2' }
+  .form-group
+    =p.label :body, :class => "col-sm-2 control-label"
+    .col-sm-10
+      = p.input_field :body, :label => false , :class => 'form-control wysihtml5'
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = p.button :submit, :class => 'btn btn-success'

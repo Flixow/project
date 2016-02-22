@@ -1,0 +1,5 @@
+- content_for :breadcrumb do
+  %li
+    = link_to t('admin.groups.index'), admin_groups_path
+  %li.active= @group.name
+= render 'form'

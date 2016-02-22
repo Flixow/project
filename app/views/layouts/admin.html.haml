@@ -1,0 +1,35 @@
+!!!
+%html 
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+  %head
+    %title CheckPlace
+    = stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', media: 'all'
+    = stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', media: 'all'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'
+    = csrf_meta_tags
+  %body
+    = render 'layouts/admin_nav'
+    .container-fluid
+      .col-sm-3
+        %ul.nav.nav-pills.nav-stacked
+          %li{:class => "#{'active' if current_page?(admin_path)}"}
+            = link_to t('admin.menu.dashboard'), admin_path
+          %li{:class => "#{'active' if current_page?(admin_categories_path)}"} 
+            = link_to t('admin.menu.categories'), admin_categories_path
+          %li{:class => "#{'active' if current_page?(admin_posts_path)}"}
+            = link_to t('admin.menu.posts'), admin_posts_path
+          %li{:class => "#{'active' if current_page?(admin_users_path)}"}
+            = link_to t('admin.menu.users'), admin_users_path
+          %li{:class => "#{'active' if current_page?(admin_groups_path)}"}
+            = link_to t('admin.menu.groups'), admin_groups_path
+          %li{:class => "#{'active' if current_page?(admin_mailings_path)}"}
+            = link_to t('admin.menu.mailings'), admin_mailings_path
+      .col-sm-9
+        %ol.breadcrumb
+          %li
+            %a{ :href=> admin_path } Home
+          = yield :breadcrumb
+        = yield
+      = render 'layouts/noty'

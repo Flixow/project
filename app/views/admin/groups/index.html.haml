@@ -1,0 +1,28 @@
+- content_for :breadcrumb do
+  %li.active= t('admin.groups.index')
+
+%h1= t('admin.groups.all')
+
+= link_to t('admin.groups.new'), new_admin_group_path, :class => "btn btn-success"
+%br
+%br
+
+%table.datatable
+  %thead
+    %tr
+      %th 
+        Name
+      %th 
+        Count
+      %th
+  %tbody
+    - @groups.each do |group|
+      %tr
+        %td
+          = link_to group.name , admin_group_path(group)
+        %td
+          - group.users.each do |user|
+            = user.email
+        %td
+          = link_to raw('<i class="fa fa-trash btn-sm btn-danger"></i>'), admin_group_path(group), :method => :delete, data: { confirm:"Are you sure?" }
+          = link_to raw('<i class="fa fa-pencil-square-o btn-sm btn-info"></i>'), edit_admin_group_path(group)

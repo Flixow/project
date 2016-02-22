@@ -1,0 +1,29 @@
+-if @user.errors.present?
+  :javascript
+    noty( {text: '#{ @user.errors.full_messages.join(', ') }' , layout: 'bottomLeft' , type: 'error'} )
+= simple_form_for [:admin , @user], :html => { class: 'form-horizontal' } do |u|
+  .form-group
+    =u.label :email, :class => "col-sm-2 control-label"
+    .col-sm-10
+      = u.input_field :email, :label => false , :class => 'form-control'
+  .form-group
+    =u.label :first_name, :class => "col-sm-2 control-label"
+    .col-sm-10
+      = u.input_field :first_name, :label => false , :class => 'form-control' 
+  .form-group
+    =u.label :last_name, :class => "col-sm-2 control-label"
+    .col-sm-10
+      = u.input_field :last_name, :label => false , :class => 'form-control'
+  .form-group
+    =u.label :address, :class => "col-sm-2 control-label"
+    .col-sm-10
+      = u.input_field :address, :label => false , :class => 'form-control'
+  .form-group
+    =u.label :groups, :class => "col-sm-2 control-label"
+    .col-sm-10
+      = u.association :groups, :label => false , :input_html => { :class => 'form-control s2' }
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = u.button :submit, :class => 'btn btn-success'
+
+      

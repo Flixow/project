@@ -1,0 +1,28 @@
+- content_for :breadcrumb do
+  %li.active= t('admin.templates.index')
+
+%h1= t('admin.templates.all')
+
+= link_to t('admin.templates.new'), new_admin_template_path, :class => "btn btn-success"
+%br
+%br
+
+%table.datatable
+  %thead
+    %tr
+      %th
+        Name
+      %th
+        Size
+      %th
+  %tbody
+    - @templates.each do |template|
+      %tr
+        %td
+          = link_to template[:name], edit_admin_template_path(template[:name])
+        %td
+          = template[:size]
+        %td
+          = template[:full_name]
+          / = link_to raw('<i class="fa fa-trash btn-sm btn-danger"></i>'), admin_template_path(template), :method => :delete, data: { confirm:"Are you sure?" }
+          / = link_to raw('<i class="fa fa-pencil-square-o btn-sm btn-info"></i>'), edit_admin_template_path(template)

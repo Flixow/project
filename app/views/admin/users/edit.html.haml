@@ -1,0 +1,5 @@
+- content_for :breadcrumb do
+  %li
+    = link_to t('admin.users.index'), admin_users_path
+  %li.active= @user.email
+= render 'form'

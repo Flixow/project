@@ -1,0 +1,5 @@
+- content_for :breadcrumb do
+  %li
+    = link_to t('admin.posts.index'), admin_posts_path
+  %li.active= @post.title
+= render 'form'

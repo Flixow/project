@@ -1,0 +1,21 @@
+example_id                                              | status  | run_time        |
+------------------------------------------------------- | ------- | --------------- |
+./spec/helpers/mailing_lists_helper_spec.rb[1:1]        | pending | 0.00008 seconds |
+./spec/helpers/mailings_helper_spec.rb[1:1]             | pending | 0.00005 seconds |
+./spec/mailers/first_mailer_spec.rb[1:1]                | pending | 0.00003 seconds |
+./spec/models/category_spec.rb[1:1:1]                   | passed  | 0.00736 seconds |
+./spec/models/category_spec.rb[1:2:1]                   | passed  | 0.0043 seconds  |
+./spec/models/category_spec.rb[1:2:2]                   | passed  | 0.04928 seconds |
+./spec/models/mailing_spec.rb[1:1]                      | pending | 0.00006 seconds |
+./spec/models/post_spec.rb[1:1:1]                       | passed  | 1.1 seconds     |
+./spec/models/user_spec.rb[1:1]                         | failed  | 0.0671 seconds  |
+./spec/requests/mailing_lists_spec.rb[1:1:1]            | failed  | 0.00872 seconds |
+./spec/requests/mailings_spec.rb[1:1:1]                 | failed  | 0.00772 seconds |
+./spec/views/mailing_lists/edit.html.haml_spec.rb[1:1]  | failed  | 0.00427 seconds |
+./spec/views/mailing_lists/index.html.haml_spec.rb[1:1] | failed  | 0.01972 seconds |
+./spec/views/mailing_lists/new.html.haml_spec.rb[1:1]   | failed  | 0.00584 seconds |
+./spec/views/mailing_lists/show.html.haml_spec.rb[1:1]  | failed  | 0.00603 seconds |
+./spec/views/mailings/edit.html.haml_spec.rb[1:1]       | failed  | 0.02176 seconds |
+./spec/views/mailings/index.html.haml_spec.rb[1:1]      | failed  | 0.00477 seconds |
+./spec/views/mailings/new.html.haml_spec.rb[1:1]        | failed  | 0.00447 seconds |
+./spec/views/mailings/show.html.haml_spec.rb[1:1]       | failed  | 0.0041 seconds  |

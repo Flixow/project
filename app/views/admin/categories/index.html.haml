@@ -1,0 +1,16 @@
+- content_for :breadcrumb do
+  %li.active= t('admin.categories.index')
+
+
+%h1= t('admin.categories.all')
+%table.datatable
+  %thead
+    %tr
+      %th Title
+      %th{:colspan => "3"}
+  %tbody
+    - @categories.each do |category|
+      %tr
+        %td= link_to category.name , admin_category_path(category)
+%br/
+= link_to t('admin.categories.new'), new_admin_category_path

@@ -1,0 +1,13 @@
+- content_for :breadcrumb do
+  %li= link_to t('admin.categories.index'), admin_categories_path
+  %li.active= @category.name
+
+%p
+  %strong Name:
+  = @category.name
+
+
+
+= link_to 'Edit', edit_admin_category_path(@category) 
+|
+= link_to 'All Posts', admin_categories_path
