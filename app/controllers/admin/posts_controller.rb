@@ -31,6 +31,7 @@ class Admin::PostsController < AdminController
         marker.lng data.longitude
         marker.picture @picture
       end
+
     end
   end
 
@@ -98,7 +99,6 @@ class Admin::PostsController < AdminController
       else
         request.remote_ip
       end
-      params.require(:post).permit(:title, :body, :category_id, :tag_list, :slug)
     end
     
 end
