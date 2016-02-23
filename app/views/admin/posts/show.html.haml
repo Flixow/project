@@ -17,12 +17,7 @@
 %br
 -if @post.latitude.present? && @post.longitude.present?
   = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=12&markers=#{@post.latitude}%2C#{@post.longitude}"
-  
-  %strong Body:
-  = @post.body.html_safe
-%p
-  %strong Category:
-  = @post.category_id
+%br
 = link_to 'Edit', edit_admin_post_path(@post)
 |
 = link_to 'All Posts', admin_posts_path
