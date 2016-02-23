@@ -7,7 +7,6 @@ class Admin::PostsController < AdminController
       @posts = Post.all.includes(:user,:category, :tag).tagged_with(params[:tag])
     else
       @posts = Post.all.includes(:user,:category)
-<<<<<<< HEAD
       if current_user.present?
         @geo_data = User.find(current_user)
       else
@@ -32,9 +31,6 @@ class Admin::PostsController < AdminController
         marker.lng data.longitude
         marker.picture @picture
       end
-
-=======
->>>>>>> 93d15be64da8ecf17a78c880c05a99f621018a8b
     end
   end
 
@@ -92,7 +88,6 @@ class Admin::PostsController < AdminController
     end
 
     def post_params
-<<<<<<< HEAD
       params.require(:post).permit(:title, :desc, :category_id, :tag_list, :slug, :location, :src, :link)
     end
   
@@ -103,9 +98,7 @@ class Admin::PostsController < AdminController
       else
         request.remote_ip
       end
-=======
       params.require(:post).permit(:title, :body, :category_id, :tag_list, :slug)
->>>>>>> 93d15be64da8ecf17a78c880c05a99f621018a8b
     end
     
 end

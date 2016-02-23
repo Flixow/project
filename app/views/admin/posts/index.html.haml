@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 %script{:src  => "//maps.google.com/maps/api/js?v=3.18&sensor=false&client=&key=&libraries=geometry&language=&hl=&region="}
 %script{:src  => "//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"}
 %script{:type => "text/javascript",
     :src  => "//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js"}
-=======
->>>>>>> 93d15be64da8ecf17a78c880c05a99f621018a8b
 - content_for :breadcrumb do
   %li.active= t('admin.posts.index')
 
@@ -45,7 +42,6 @@
           - if can? :manage_own_post, post
             = link_to raw('<i class="fa fa-trash btn-sm btn-danger"></i>'), admin_post_path(post), :method => :delete, data: { confirm:"Are you sure?" }
             = link_to raw('<i class="fa fa-pencil-square-o btn-sm btn-info"></i>'), edit_admin_post_path(post)
-<<<<<<< HEAD
 
 %div{:style => "width: 800px;"}
   #map{:style => "width: 800px; height: 400px;"}
@@ -61,5 +57,3 @@
     handler.map.centerOn([#{raw @lat.to_json}, #{raw @long.to_json}]);
     handler.getMap().setZoom(13);
   });
-=======
->>>>>>> 93d15be64da8ecf17a78c880c05a99f621018a8b
