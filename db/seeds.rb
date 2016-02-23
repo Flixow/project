@@ -10,4 +10,5 @@ require 'ffaker'
   	:tag_list => FFaker::CheesyLingo.words,
     :location => cities.shuffle.sample
     sleep(1)
+  )
 end
