@@ -9,6 +9,6 @@ require 'ffaker'
     :category_id => rand(1...7),
   	:tag_list => FFaker::CheesyLingo.words,
     :location => cities.shuffle.sample
-    sleep(1)
   )
+  sleep(1)
 end
