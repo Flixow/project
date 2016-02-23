@@ -19,7 +19,10 @@ gem 'chartkick'
 gem 'groupdate'
 gem 'ffaker'
 gem 'taps'
+<<<<<<< HEAD
 gem 'gmaps4rails'
+=======
+>>>>>>> 93d15be64da8ecf17a78c880c05a99f621018a8b
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'

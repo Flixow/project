@@ -17,8 +17,11 @@
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require bootstrap-wysihtml5
+<<<<<<< HEAD
 //= require underscore
 //= require gmaps/google
+=======
+>>>>>>> 93d15be64da8ecf17a78c880c05a99f621018a8b
 
 jQuery(function(){
   $(".s2").select2();

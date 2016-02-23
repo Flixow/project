@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160223002036) do
+=======
+ActiveRecord::Schema.define(version: 20160210202158) do
+>>>>>>> 93d15be64da8ecf17a78c880c05a99f621018a8b
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -75,17 +79,24 @@ ActiveRecord::Schema.define(version: 20160223002036) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
+<<<<<<< HEAD
+=======
+    t.text     "body"
+>>>>>>> 93d15be64da8ecf17a78c880c05a99f621018a8b
     t.integer  "category_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
     t.string   "slug"
+<<<<<<< HEAD
     t.string   "desc"
     t.string   "location"
     t.float    "longitude"
     t.float    "latitude"
     t.string   "src"
     t.string   "link"
+=======
+>>>>>>> 93d15be64da8ecf17a78c880c05a99f621018a8b
   end
 
   add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true
