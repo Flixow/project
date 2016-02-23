@@ -1,0 +1,22 @@
+- content_for :breadcrumb do
+  %li= link_to t('admin.posts.index'), admin_posts_path
+  %li.active= @post.title
+
+%p
+  %strong Title:
+  = @post.title
+%p
+  %strong Category:
+  = @post.category.name
+-if @post.desc.present?
+  = @post.desc.html_safe
+
+= link_to 'Edit', edit_admin_post_path(@post)
+|
+= link_to 'All Posts', admin_posts_path
+%br
+-if @post.latitude.present? && @post.longitude.present?
+  = image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=12&markers=#{@post.latitude}%2C#{@post.longitude}"
+
+
+= render 'layouts/disqus'

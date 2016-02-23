@@ -1,0 +1,23 @@
+-if @mailing.errors.present?
+  :javascript
+    noty( {text: '#{ @mailing.errors.full_messages.join(', ') }' , layout: 'bottomLeft' , type: 'error'} )
+= simple_form_for [:admin , @mailing], :html => { class: 'form-horizontal' } do |p|
+  .form-group
+    =p.label :name, :class => "col-sm-2 control-label"
+    .col-sm-10
+      = p.input_field :name, :label => false , :class => 'form-control'
+  .form-group
+    =p.label :groups, :class => "col-sm-2 control-label"
+    .col-sm-10
+      = p.association :groups, :label => false , :input_html => { :class => 'form-control s2' }
+  .form-group
+    =p.label :deliver_at, :class => "col-sm-2 control-label"
+    .col-sm-10
+      = p.input :deliver_at, :label => false, start_year: Date.today.year - 90, order: [:day, :month, :year]
+  .form-group
+    =p.label :template, :class => "col-sm-2 control-label"
+    .col-sm-10
+      = p.input :template, collection: @templates, :label => false, :input_html => { :class => 'form-control s2' }
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = p.button :submit, :class => 'btn btn-success'

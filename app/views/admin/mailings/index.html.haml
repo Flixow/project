@@ -1,0 +1,51 @@
+- content_for :breadcrumb do
+  %li.active= t('admin.mailings.index')
+
+%h1= t('admin.mailings.all')
+
+= link_to t('admin.mailings.new'), new_admin_mailing_path, :class => "btn btn-success"
+%br
+%br
+
+%table.datatable
+  %thead
+    %tr
+      %th
+        Name
+      %th 
+        Template
+      %th
+        Groups
+      %th
+        Deliver_at
+      %th
+        Statuss
+      %th
+  %tbody
+    - @mailings.each do |mailing|
+      %tr
+        %td
+          = mailing.name
+        %td
+          = mailing.template
+        %td
+          - mailing.groups.each do |group|
+            = group.name
+            = group.users.count
+            %br
+        %td
+          = mailing.deliver_at
+        %td
+          - if Delayed::Job.where(queue: mailing.id).present?
+            = "Planowo za"
+            = distance_of_time_in_words_to_now(Time.zone.parse(Delayed::Job.where(queue: mailing.id).select(['run_at as child_date']).first.child_date))
+          - if mailing.delivered_at.present? && !Delayed::Job.where(queue: mailing.id).present?
+            = "Dostaczono"
+            = distance_of_time_in_words(mailing.deliver_at, mailing.delivered_at)
+            = "temu."
+          - if !mailing.delivered_at.present? && !Delayed::Job.where(queue: mailing.id).present?
+            = "Not planned"
+        %td
+          = link_to raw('<i class="fa fa-trash btn-sm btn-danger"></i>'), admin_mailing_path(mailing), :method => :delete, data: { confirm:"Are you sure?" }
+          = link_to raw('<i class="fa fa-pencil-square-o btn-sm btn-info"></i>'), edit_admin_mailing_path(mailing)
+          = link_to "Deliver", admin_mailing_deliver_path(mailing)

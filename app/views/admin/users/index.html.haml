@@ -1,0 +1,23 @@
+- content_for :breadcrumb do
+  %li.active= t('admin.users.index')
+
+
+%h1= t('admin.users.all')
+%table.datatable
+  %thead
+    %tr
+      %th Email
+      %th Mailing List
+      %th Admin?
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td
+          = link_to user.email , admin_user_path(user)
+        %td
+          - user.groups.each do |group|
+            = group.name
+        %td
+          = user.admin
+%br/
+= link_to t('admin.users.new'), new_admin_user_path

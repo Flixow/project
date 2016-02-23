@@ -1,0 +1,11 @@
+I"€(function() {
+  var $;
+
+  $ = jQuery;
+
+  $.noty.defaults.timeout = 8000;
+
+  $.noty.defaults.layouts = 'bottom';
+
+}).call(this);
+:ET

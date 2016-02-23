@@ -1,0 +1,59 @@
+%script{:src  => "//maps.google.com/maps/api/js?v=3.18&sensor=false&client=&key=&libraries=geometry&language=&hl=&region="}
+%script{:src  => "//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"}
+%script{:type => "text/javascript",
+    :src  => "//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js"}
+- content_for :breadcrumb do
+  %li.active= t('admin.posts.index')
+
+%h1= t('admin.posts.all')
+
+#tag_cloud
+  - tag_cloud Post.tag_counts, %w[s m l] do |tag, css_class|
+    = link_to tag.name, admin_tag_path(tag.name), class: css_class
+
+= link_to t('admin.posts.new'), new_admin_post_path, :class => "btn btn-success"
+%br
+%br
+
+%table.datatable
+  %thead
+    %tr
+      %th 
+        Title
+      %th 
+        Category
+      %th
+        Tags
+      %th
+        Autor
+      %th
+  %tbody
+    - @posts.each do |post|
+      %tr
+        %td
+          = link_to post.title , admin_post_path(post)
+        %td
+          = post.category.name if post.category.present?
+        %td
+          = raw post.tag_list.map { |t| link_to t, admin_tag_path(t) }.join(', ') if post.tag_list.present?
+        %td
+          = post.user.email if post.user.present?
+        %td
+          - if can? :manage_own_post, post
+            = link_to raw('<i class="fa fa-trash btn-sm btn-danger"></i>'), admin_post_path(post), :method => :delete, data: { confirm:"Are you sure?" }
+            = link_to raw('<i class="fa fa-pencil-square-o btn-sm btn-info"></i>'), edit_admin_post_path(post)
+
+%div{:style => "width: 800px;"}
+  #map{:style => "width: 800px; height: 400px;"}
+
+%div{:style => "padding-bottom: 100px;"}
+
+:javascript
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers( #{raw @hash.to_json} );
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.map.centerOn([#{raw @lat.to_json}, #{raw @long.to_json}]);
+    handler.getMap().setZoom(13);
+  });

@@ -1,0 +1,14 @@
+- content_for :breadcrumb do
+  %li= link_to t('admin.groups.index'), admin_groups_path
+  %li.active= @group.name
+
+%p
+  %strong Title:
+  = @group.name
+%p
+  %strong Users Count:
+  = @group.users.count
+
+= link_to 'Edit', edit_admin_group_path(@group)
+|
+= link_to 'All Mailing lists', admin_groups_path

@@ -1,0 +1,40 @@
+pl:
+  buttons:
+    save: "Zapisz"
+  admin:
+    nav_menu:
+      sign_in: "Zaloguj"
+      sign_up: "Zarejestruj"
+    menu:
+      dashboard: "Panel"
+      posts: "Nowości"
+      categories: "Kategorie"
+      users: "Użytkownicy"
+      tags: "Tagi"
+      comments: "Komentarze"
+    posts:
+      index: "Lista postów"
+      all: "Lista postów"
+      new: "Dodaj post"
+      edit: "Edytuj post"
+    categories:
+      index: "Lista kategorii"
+      all: "Wszystkie kategorie"
+      new: "Dodaj kategorię"
+      edit: "Edytuj kategorię"
+    users:
+      index: "Lista użytkowników"
+      all: "Wszyscy użytkownicy"
+      new: "Dodaj użytkownika"
+      edit: "Edytuj użytkownika"
+  activerecord:
+    attributes:
+      post:
+        title: "Tytuł"
+        category: "Kategoria"
+    errors:
+      models:
+        post:
+          attributes:
+            title:
+              too_short: " musi posiadac min 3 znaki."
